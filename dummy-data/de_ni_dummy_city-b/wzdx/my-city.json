@@ -1,0 +1,109 @@
+{
+  "disclaimer": "EXAMPLE DATA ONLY. This feed is fictional dummy data created for testing purposes. It is NOT published by or affiliated with any official authority (e.g. state, district or municipal road authority) and does NOT describe real work zones. Do not use for navigation, routing or any operational purpose.",
+  "feed_info": {
+    "publisher": "Dummy City B (EXAMPLE DATA - not an official authority)",
+    "version": "4.2",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "update_date": "2026-10-18T08:00:00Z",
+    "update_frequency": 86400,
+    "contact_name": "Example Contact (fictional)",
+    "contact_email": "example@example.invalid",
+    "data_sources": [
+      {
+        "data_source_id": "dummy-city-b-roadworks",
+        "organization_name": "Dummy City B (EXAMPLE DATA - not an official authority)",
+        "contact_name": "Example Contact (fictional)",
+        "contact_email": "example@example.invalid",
+        "update_frequency": 86400,
+        "update_date": "2026-10-18T08:00:00Z"
+      }
+    ]
+  },
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "dummy-city-b-wz-0001",
+      "type": "Feature",
+      "properties": {
+        "core_details": {
+          "event_type": "work-zone",
+          "data_source_id": "dummy-city-b-roadworks",
+          "road_names": ["Testallee"],
+          "direction": "southbound",
+          "name": "[EXAMPLE] Testallee bridge inspection",
+          "description": "EXAMPLE DATA - fictional work zone, not issued by any official authority and not a real roadwork. Bridge inspection with alternating single-lane traffic.",
+          "creation_date": "2026-10-03T07:45:00Z",
+          "update_date": "2026-10-18T08:00:00Z"
+        },
+        "start_date": "2026-10-21T08:00:00Z",
+        "end_date": "2026-10-23T14:00:00Z",
+        "is_start_date_verified": false,
+        "is_end_date_verified": false,
+        "is_start_position_verified": false,
+        "is_end_position_verified": false,
+        "location_method": "channel-device-method",
+        "vehicle_impact": "alternating-one-way",
+        "worker_presence": {
+          "are_workers_present": true,
+          "method": "scheduled"
+        },
+        "reduced_speed_limit_kph": 20,
+        "restrictions": [
+          { "type": "reduced-height", "value": 3.8, "unit": "meters" }
+        ],
+        "types_of_work": [
+          { "type_name": "maintenance", "is_architectural_change": false }
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [8.04710, 52.27930],
+          [8.04702, 52.27840],
+          [8.04695, 52.27755]
+        ]
+      }
+    },
+    {
+      "id": "dummy-city-b-wz-0002",
+      "type": "Feature",
+      "properties": {
+        "core_details": {
+          "event_type": "work-zone",
+          "data_source_id": "dummy-city-b-roadworks",
+          "road_names": ["Platzhalterring"],
+          "direction": "clockwise",
+          "name": "[EXAMPLE] Platzhalterring lane reduction",
+          "description": "EXAMPLE DATA - fictional work zone, not issued by any official authority and not a real roadwork. Long-term construction of a cycle lane, right lane closed.",
+          "creation_date": "2026-09-20T11:15:00Z",
+          "update_date": "2026-10-18T08:00:00Z"
+        },
+        "start_date": "2026-09-28T05:00:00Z",
+        "end_date": "2027-03-31T18:00:00Z",
+        "is_start_date_verified": false,
+        "is_end_date_verified": false,
+        "is_start_position_verified": false,
+        "is_end_position_verified": false,
+        "location_method": "other",
+        "vehicle_impact": "some-lanes-closed",
+        "reduced_speed_limit_kph": 30,
+        "lanes": [
+          { "order": 1, "type": "general", "status": "open" },
+          { "order": 2, "type": "general", "status": "closed" }
+        ],
+        "types_of_work": [
+          { "type_name": "roadway-creation", "is_architectural_change": true }
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [8.05120, 52.28310],
+          [8.05290, 52.28265],
+          [8.05410, 52.28170],
+          [8.05455, 52.28050]
+        ]
+      }
+    }
+  ]
+}

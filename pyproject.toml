@@ -1,0 +1,9 @@
+[project]
+name = "openroadblock-datacatalog"
+version = "0.1.0"
+description = "Generates a static WZDx feed registry (USDOT registry layout) into dist/"
+requires-python = ">=3.13"
+dependencies = ["jinja2>=3.1"]
+
+[tool.uv]
+package = false

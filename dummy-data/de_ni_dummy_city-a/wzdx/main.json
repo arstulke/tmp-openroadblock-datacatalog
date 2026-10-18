@@ -1,0 +1,146 @@
+{
+  "disclaimer": "EXAMPLE DATA ONLY. This feed is fictional dummy data created for testing purposes. It is NOT published by or affiliated with any official authority (e.g. state, district or municipal road authority) and does NOT describe real work zones. Do not use for navigation, routing or any operational purpose.",
+  "feed_info": {
+    "publisher": "Dummy City A (EXAMPLE DATA - not an official authority)",
+    "version": "4.2",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "update_date": "2026-10-18T08:00:00Z",
+    "update_frequency": 86400,
+    "contact_name": "Example Contact (fictional)",
+    "contact_email": "example@example.invalid",
+    "data_sources": [
+      {
+        "data_source_id": "dummy-city-a-roadworks",
+        "organization_name": "Dummy City A (EXAMPLE DATA - not an official authority)",
+        "contact_name": "Example Contact (fictional)",
+        "contact_email": "example@example.invalid",
+        "update_frequency": 86400,
+        "update_date": "2026-10-18T08:00:00Z"
+      }
+    ]
+  },
+  "type": "FeatureCollection",
+  "bbox": [9.72520, 52.37010, 9.74120, 52.37902],
+  "features": [
+    {
+      "id": "dummy-city-a-wz-0001",
+      "type": "Feature",
+      "properties": {
+        "core_details": {
+          "event_type": "work-zone",
+          "data_source_id": "dummy-city-a-roadworks",
+          "road_names": ["Musterstraße"],
+          "direction": "eastbound",
+          "name": "[EXAMPLE] Musterstraße sewer renewal",
+          "description": "EXAMPLE DATA - fictional work zone, not issued by any official authority and not a real roadwork. Sewer renewal with single-lane closure.",
+          "creation_date": "2026-10-01T09:00:00Z",
+          "update_date": "2026-10-18T08:00:00Z"
+        },
+        "start_date": "2026-10-20T06:00:00Z",
+        "end_date": "2026-11-28T17:00:00Z",
+        "is_start_date_verified": false,
+        "is_end_date_verified": false,
+        "is_start_position_verified": false,
+        "is_end_position_verified": false,
+        "location_method": "channel-device-method",
+        "vehicle_impact": "some-lanes-closed",
+        "worker_presence": {
+          "are_workers_present": true,
+          "method": "check-in-app"
+        },
+        "reduced_speed_limit_kph": 30,
+        "lanes": [
+          { "order": 1, "type": "general", "status": "closed" },
+          { "order": 2, "type": "general", "status": "open" }
+        ],
+        "types_of_work": [
+          { "type_name": "below-road-work", "is_architectural_change": false }
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [9.73010, 52.37440],
+          [9.73180, 52.37452],
+          [9.73345, 52.37461]
+        ]
+      }
+    },
+    {
+      "id": "dummy-city-a-wz-0002",
+      "type": "Feature",
+      "properties": {
+        "core_details": {
+          "event_type": "work-zone",
+          "data_source_id": "dummy-city-a-roadworks",
+          "road_names": ["Beispielweg"],
+          "direction": "northbound",
+          "name": "[EXAMPLE] Beispielweg full closure",
+          "description": "EXAMPLE DATA - fictional work zone, not issued by any official authority and not a real roadwork. Resurfacing with full road closure, detour signposted.",
+          "creation_date": "2026-10-05T10:30:00Z",
+          "update_date": "2026-10-18T08:00:00Z"
+        },
+        "start_date": "2026-11-02T07:00:00Z",
+        "end_date": "2026-11-06T16:00:00Z",
+        "is_start_date_verified": false,
+        "is_end_date_verified": false,
+        "is_start_position_verified": false,
+        "is_end_position_verified": false,
+        "location_method": "unknown",
+        "vehicle_impact": "all-lanes-closed",
+        "lanes": [
+          { "order": 1, "type": "general", "status": "closed" }
+        ],
+        "types_of_work": [
+          { "type_name": "surface-work", "is_architectural_change": false }
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [9.72520, 52.37010],
+          [9.72535, 52.37120],
+          [9.72548, 52.37235]
+        ]
+      }
+    },
+    {
+      "id": "dummy-city-a-wz-0003",
+      "type": "Feature",
+      "properties": {
+        "core_details": {
+          "event_type": "work-zone",
+          "data_source_id": "dummy-city-a-roadworks",
+          "road_names": ["Am Fiktivpark"],
+          "direction": "westbound",
+          "name": "[EXAMPLE] Am Fiktivpark utility work",
+          "description": "EXAMPLE DATA - fictional work zone, not issued by any official authority and not a real roadwork. Utility connection work on the shoulder, all lanes open.",
+          "creation_date": "2026-10-10T12:00:00Z",
+          "update_date": "2026-10-18T08:00:00Z"
+        },
+        "start_date": "2026-10-15T08:00:00Z",
+        "end_date": "2026-10-24T15:00:00Z",
+        "is_start_date_verified": false,
+        "is_end_date_verified": false,
+        "is_start_position_verified": false,
+        "is_end_position_verified": false,
+        "location_method": "other",
+        "vehicle_impact": "all-lanes-open",
+        "lanes": [
+          { "order": 1, "type": "general", "status": "open" },
+          { "order": 2, "type": "shoulder", "status": "closed" }
+        ],
+        "types_of_work": [
+          { "type_name": "roadside-work", "is_architectural_change": false }
+        ]
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [9.74120, 52.37890],
+          [9.73990, 52.37902]
+        ]
+      }
+    }
+  ]
+}

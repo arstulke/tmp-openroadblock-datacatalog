@@ -1,0 +1,56 @@
+{% from "_icons.html.j2" import icon %}
+
+{# One collapsible feed row: key facts in the summary, the rest on expand. #}
+{% macro feed_item(feed) -%}
+<li class="feed" data-search="{{ feed.search }}">
+  <details>
+    <summary>
+      <span class="name">{{ icon("chevron", "chevron") }}{{ feed.publisher }}
+        {% if feed.disclaimer %}
+        <span class="badge warn" title="See disclaimer">{{ icon("alert") }}disclaimer</span>
+        {% endif %}
+      </span>
+      <span class="meta">
+        <span>{{ icon("cone") }}{{ feed.record_count }} work zone{{ "" if feed.record_count == 1 else "s" }}</span>
+        {% if feed.frequency %}
+        <span>{{ icon("refresh") }}every {{ feed.frequency }}</span>
+        {% endif %}
+      </span>
+    </summary>
+    <div class="body">
+      <div class="actions">
+        <a class="button" href="{{ feed.url }}" target="_blank" rel="noopener">{{ icon("external") }}Open feed (GeoJSON)<span class="sr-only"> (opens in a new tab)</span></a>
+        <button type="button" class="button secondary copy" data-url="{{ feed.url }}" hidden>{{ icon("copy") }}<span>Copy URL</span></button>
+        <code class="url">{{ feed.url }}</code>
+      </div>
+      <dl>
+        <dt>{{ icon("hash") }}Feed ID</dt><dd><code>{{ feed.id }}</code></dd>
+        <dt>{{ icon("building") }}Published by</dt><dd>{{ feed.publisher }}</dd>
+        <dt>{{ icon("tag") }}WZDx version</dt><dd>{{ feed.version }}</dd>
+        {% if feed.update_date %}
+        <dt>{{ icon("clock") }}Last update</dt><dd><time datetime="{{ feed.update_date }}">{{ feed.update_date | timestamp }}</time></dd>
+        {% endif %}
+        {% if feed.frequency %}
+        <dt>{{ icon("refresh") }}Update interval</dt><dd>every {{ feed.frequency }}</dd>
+        {% endif %}
+        {% if feed.sdate %}
+        <dt>{{ icon("calendar") }}Listed since</dt><dd>{{ feed.sdate }}</dd>
+        {% endif %}
+        {% if feed.license %}
+        <dt>{{ icon("scale") }}License</dt><dd><a href="{{ feed.license }}">{{ feed.license | license_name }}</a></dd>
+        {% endif %}
+        {% if feed.contact_email %}
+        <dt>{{ icon("mail") }}Contact</dt><dd><a href="mailto:{{ feed.contact_email }}">{{ feed.contact_name or feed.contact_email }}</a></dd>
+        {% endif %}
+        {% if feed.bbox %}
+        {% set w, s, e, n = feed.bbox %}
+        <dt>{{ icon("map") }}Area</dt><dd><a href="{{ feed.map_url }}">{{ w }}, {{ s }} – {{ e }}, {{ n }}</a></dd>
+        {% endif %}
+      </dl>
+      {% if feed.disclaimer %}
+      <p class="disclaimer">{{ icon("alert") }}<span>{{ feed.disclaimer }}</span></p>
+      {% endif %}
+    </div>
+  </details>
+</li>
+{%- endmacro %}

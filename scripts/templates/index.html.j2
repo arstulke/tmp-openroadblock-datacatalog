@@ -1,0 +1,61 @@
+{% from "_icons.html.j2" import icon, sprite %}
+{% from "_feed.html.j2" import feed_item %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ base }}/wzdx/">
+  <link rel="alternate" type="application/json" href="feed-registry.json" title="Feed registry (JSON)">
+  <link rel="alternate" type="text/csv" href="feed-registry.csv" title="Feed registry (CSV)">
+  <link rel="stylesheet" href="static/style.css">
+  <script src="static/app.js" defer></script>
+</head>
+<body>
+  {{ sprite() | indent(2) }}
+  <header>
+    <h1>{{ icon("cone", "brand") }}{{ title }}</h1>
+    <p class="lead">{{ description }} All feeds use the data format of the <a href="{{ wzdx_spec }}">WZDx specification</a>.</p>
+    <p class="notice" role="note">{{ icon("info") }}<span>{{ disclaimer }}</span></p>
+    <ul class="stats">
+      <li>{{ icon("database") }}<div><strong>{{ feed_count }}</strong><span>feeds</span></div></li>
+      <li>{{ icon("globe") }}<div><strong>{{ groups | length }}</strong><span>regions</span></div></li>
+      <li>{{ icon("cone") }}<div><strong>{{ zone_count }}</strong><span>work zones</span></div></li>
+    </ul>
+    <div class="downloads">
+      <span class="muted">Full registry:</span>
+      <a class="button secondary" href="feed-registry.json" target="_blank" rel="noopener">{{ icon("external") }}JSON<span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="button secondary" href="feed-registry.csv" target="_blank" rel="noopener">{{ icon("external") }}CSV<span class="sr-only"> (opens in a new tab)</span></a>
+    </div>
+  </header>
+  <main>
+    <h2 id="feeds">Feeds</h2>
+    <form class="filters" role="search" onsubmit="return false" hidden>
+      <label class="search">
+        {{ icon("search") }}
+        <input type="search" id="q" placeholder="Search publisher, region, feed ID…" aria-label="Search feeds">
+      </label>
+      <select id="region" aria-label="Filter by region">
+        <option value="">All regions</option>
+        {% for state, feeds in groups.items() %}
+        <option value="{{ state }}">{{ state | title }} ({{ feeds | length }})</option>
+        {% endfor %}
+      </select>
+      <output id="shown" aria-live="polite"></output>
+    </form>
+    {% for state, feeds in groups.items() %}
+    <section class="group" data-state="{{ state }}">
+      <h3>{{ icon("pin") }}{{ state | title }} <span class="count">{{ feeds | length }}</span></h3>
+      <ul class="feeds">
+        {% for feed in feeds %}
+        {{ feed_item(feed) | indent(8) }}
+        {% endfor %}
+      </ul>
+    </section>
+    {% endfor %}
+    <p class="empty muted" id="empty" hidden>No feeds match your search.</p>
+  </main>
+</body>
+</html>
